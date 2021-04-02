@@ -108,17 +108,17 @@ const readData = () => {
 
 
 
-const deleteMenu = async(tasks = []) => {
+const listPlaces = async(places = []) => {
 
-   const choices =  Object.keys(tasks).map(function(key, index) {
+   const choices =  Object.keys(places).map(function(key, index) {
 
-        let obj_tmp = tasks[key];
+        let obj_tmp = places[key];
 
         const idx = index + 1;
         
         return{
             value: obj_tmp.id,
-            name:`${idx} - ${obj_tmp.desc}`
+            name:`${idx} - ${obj_tmp.name}`
         }
     });
 
@@ -131,7 +131,7 @@ const deleteMenu = async(tasks = []) => {
         {
             type:'list',
             name:'id',
-            message:'Delete',
+            message:'Select place',
             choices
 
         }
@@ -203,7 +203,7 @@ module.exports = {
   readInput,
   saveData,
   readData,
-  deleteMenu,
+  listPlaces,
   confirm,
   checklistMenu
 }
