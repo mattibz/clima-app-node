@@ -23,17 +23,20 @@ const execute = async () => {
                 //select place
                 const palce_select_id = await listPlaces(places);
                 const place_select = places.find( place => place.id === palce_select_id);
-                
 
+                //getweather by place
+                const weather_status = await searches.getWeather(place_select.lat,place_select.lng);
+               
                 //info
                 console.clear();
                 console.log(' - Information de la ciudad seleccionada -\n'.green);
                 console.log('Ciudad: '.green,place_select.name);
                 console.log('Lat: '.green,place_select.lat);
                 console.log('Lng: '.green,place_select.lng);
-                console.log('Temperatura: '.green);
-                console.log('Max: '.green);
-                console.log('Min: '.green);
+                console.log('Temperatura: '.green,weather_status.temp);
+                console.log('Max: '.green,weather_status.max);
+                console.log('Min: '.green,weather_status.min);
+                console.log('Desc: '.green,weather_status.desc);
             break;
 
             case 2:

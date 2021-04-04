@@ -13,6 +13,17 @@ class Searcher {
             'language':'es'
         }
     }
+
+    get paramsWeather(){
+
+        return{
+            appid:process.env.OPENWEATHER_KEY,
+            units:'metric',
+            lang:'es'
+        }
+
+    }
+
     async getCity(place = ''){
 
         try{
@@ -33,6 +44,32 @@ class Searcher {
 
         }catch(error){
             return [];
+        }
+    }
+
+
+    async getWeather(lat,lon){
+
+        try{
+            
+            const instance = axios.create({
+                baseURL:`https://api.openweathermap.org/data/2.5/weather`,
+                params:{...this.paramsWeather,lat,lon}
+            });
+
+            const response = await instance.get();
+            console.log(response);
+            const { weather,main }  = response.data;
+
+            return {
+                desc:weather[0].description,
+                min:main.temp_min,
+                max:main.temp_max,
+                temp:main.temp
+            }
+
+        }catch(err){
+            console.log(err);
         }
     }
 
