@@ -6,9 +6,11 @@ const execute = async () => {
 
     let opt;
 
+    const searches = new Searcher();
+
     do{
 
-        const searches = new Searcher();
+       // const searches = new Searcher();
         opt = await inquirerMenu();
         
         switch(opt){
@@ -22,7 +24,11 @@ const execute = async () => {
 
                 //select place
                 const palce_select_id = await listPlaces(places);
+                if(palce_select_id === '0') continue;
+
                 const place_select = places.find( place => place.id === palce_select_id);
+
+                searches.addHistory(place_select.name);
 
                 //getweather by place
                 const weather_status = await searches.getWeather(place_select.lat,place_select.lng);
@@ -40,6 +46,16 @@ const execute = async () => {
             break;
 
             case 2:
+                //console.log(`${searches.formatHistory}`);
+
+                searches.formatHistory.forEach( (place,i) => {
+
+                    const idx = `${i +1 }. `.yellow;
+
+                    console.log(`${idx} ${place}`);
+
+                });
+                    
             break;
 
             case 3:
