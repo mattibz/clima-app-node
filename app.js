@@ -9,8 +9,7 @@ const execute = async () => {
     const searches = new Searcher();
 
     do{
-
-       // const searches = new Searcher();
+        
         opt = await inquirerMenu();
         
         switch(opt){
@@ -46,7 +45,6 @@ const execute = async () => {
             break;
 
             case 2:
-                //console.log(`${searches.formatHistory}`);
 
                 searches.formatHistory.forEach( (place,i) => {
 

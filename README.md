@@ -1,0 +1,1 @@
+Esta es una aplicación de consola y a su vez también de portafolio desarrollada en node v15.7.0 la cual integra entre otras cosas el modulo de inquirer para desarrollar menus interactivos y algunas otras cosas como la libreria de colors,axios,dotenv las api rest de mapbox y openweather para la obtencion de datos con algunas caracteristicas interesantes en su desarrollo.
